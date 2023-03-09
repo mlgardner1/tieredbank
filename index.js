@@ -1,3 +1,4 @@
+require("dotenv").config();
 const auth = require("./firebase.js").auth;
 const express = require("express");
 const app = express();

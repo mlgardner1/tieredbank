@@ -1,7 +1,6 @@
 const { resolve } = require("path");
-
 const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://mongo:27017";
+const url = process.env.MONGO_URI;
 let db = null;
 
 //connect to mongo
