@@ -1,5 +1,8 @@
 const { resolve } = require("path");
-const MongoClient = require("mongodb").MongoClient;
+//const MongoClient = require("mongodb").MongoClient;
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const uri =
+  "mongodb+srv://mlgardner1:<Ruthmer1r1985>@cluster0.jkih53c.mongodb.net/?retryWrites=true&w=majority";
 const url = process.env.MONGO_URI;
 let db = null;
 
@@ -9,6 +12,18 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(function (
   err
 ) {
   console.log("Connected successfully to db server");
+
+  //connect to Mongo Atlas
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverApi: ServerApiVersion.v1,
+  });
+  client.connect((err) => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+  });
 
   //connect to myproject database
   db = client.db("myproject");
