@@ -14,16 +14,16 @@ MongoClient.connect(url, { useUnifiedTopology: true }).then(function (
   console.log("Connected successfully to db server");
 
   //connect to Mongo Atlas
-  const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverApi: ServerApiVersion.v1,
-  });
-  client.connect((err) => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
-  });
+  // const client = new MongoClient(uri, {
+  //   useNewUrlParser: true,
+  //   useUnifiedTopology: true,
+  //   serverApi: ServerApiVersion.v1,
+  // });
+  // client.connect((err) => {
+  //   const collection = client.db("test").collection("devices");
+  //   // perform actions on the collection object
+  //   client.close();
+  // });
 
   //connect to myproject database
   db = client.db("myproject");
