@@ -2,13 +2,18 @@ const { resolve } = require("path");
 //const MongoClient = require("mongodb").MongoClient;
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const url = process.env.MONGO_URI;
+const url = require("url");
+const fixieUrl = url.parse(process.env.FIXIE_URL);
+const fixieAuth = fixieUrl.auth.split(":");
 let db = null;
 
 //connect to mongo
-MongoClient.connect(url, { useUnifiedTopology: true }).then(function (
-  client,
-  err
-) {
+MongoClient.connect(url, {
+  useUnifiedTopology: true,
+  proxyHost: fixieUrl.hostname,
+  proxyPort: fixieUrl.port,
+  auth: { username: fixieAuth[0], password: fixieAuth[1] },
+}).then(function (client, err) {
   console.log("Connected successfully to db server");
 
   //connect to Mongo Atlas
