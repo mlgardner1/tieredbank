@@ -1,8 +1,6 @@
 const { resolve } = require("path");
 //const MongoClient = require("mongodb").MongoClient;
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri =
-  "mongodb+srv://mlgardner1:<Ruthmer1r1985>@cluster0.jkih53c.mongodb.net/?retryWrites=true&w=majority";
 const url = process.env.MONGO_URI;
 let db = null;
 
