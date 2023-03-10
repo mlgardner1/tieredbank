@@ -1,14 +1,14 @@
 const { resolve } = require("path");
 //const MongoClient = require("mongodb").MongoClient;
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const url = process.env.MONGO_URI;
+const mongoUrl = process.env.MONGO_URI;
 const url = require("url");
 const fixieUrl = url.parse(process.env.FIXIE_URL);
 const fixieAuth = fixieUrl.auth.split(":");
 let db = null;
 
 //connect to mongo
-MongoClient.connect(url, {
+MongoClient.connect(mongoUrl, {
   useUnifiedTopology: true,
   proxyHost: fixieUrl.hostname,
   proxyPort: fixieUrl.port,
